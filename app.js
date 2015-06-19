@@ -67,21 +67,3 @@ six.addEventListener('click', writeMove);
 seven.addEventListener('click', writeMove);
 eight.addEventListener('click', writeMove);
 nine.addEventListener('click', writeMove);
-
-
-//
-// two.addEventListener('click', function () {
-//   if (!two.innerHTML) {
-//     two.innerHTML = X || O;
-//   } else  {
-//     p.innerHTML = "Please select an open box";
-//   }
-// })
-//
-// three.addEventListener('click', function () {
-//   if (!three.innerHTML) {
-//     three.innerHTML = X || O;
-//   } else  {
-//     p.innerHTML = "Please select an open box";
-//   }
-// })
