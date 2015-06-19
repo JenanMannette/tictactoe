@@ -7,7 +7,6 @@ var six = document.getElementById('six');
 var seven = document.getElementById('seven');
 var eight = document.getElementById('eight');
 var nine = document.getElementById('nine');
-var output = document.getElementsByClassName('p')
 
 var X = 'X';
 var O = 'O';
