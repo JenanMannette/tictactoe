@@ -2,18 +2,46 @@
   box-sizing: border-box;
 }
 
+body {
+  background: url("bg.jpg") no-repeat;
+  background-size: cover;
+}
+
 html {
   text-align: center;
+  font-family: 'Poiret One', cursive;
+  font-size: 20px;
 }
 
-table {
-  margin: 0 auto;
+header {
+  border: 2px solid black;
+  width: 30%;
+  margin: 20px auto;
+  background: rgba(255,255,255,.7);
 }
 
-TD {
-  border: 1px solid black;
-  width: 150px;
-  height: 150px;
-  font-size: 50px;
+#board {
+  width: 600px;
+  height: 600px;
+  background: rgba(255,255,255,.7);
+  margin: 20px auto;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.section {
+  width: 30%;
+  height: 30%;
+  float: left;
+  margin-right: 5%;
+  margin-bottom: 5%;
   text-align: center;
+  line-height: 160px;
+  border: 1px solid black;
+  background: rgba(255,255,255,.7);
+  font-size: 50px;
+}
+
+.section:nth-child(3n) {
+  margin-right: 0%;
 }

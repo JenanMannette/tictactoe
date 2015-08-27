@@ -1,68 +1,57 @@
-var one = document.getElementById('one');
-var two = document.getElementById('two');
-var three = document.getElementById('three');
-var four = document.getElementById('four');
-var five = document.getElementById('five');
-var six = document.getElementById('six');
-var seven = document.getElementById('seven');
-var eight = document.getElementById('eight');
-var nine = document.getElementById('nine');
+var board = document.getElementById('board');
+var squares = document.getElementsByClassName('section');
 
-var X = 'X';
-var O = 'O';
-var counter = 0;
+var winningCombos = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7]
+];
 
-function writeMove(e) {
-  if (e.target.innerHTML === '') {
-    if (counter %2 === 0 || counter === 0) {
-      e.target.innerHTML = X;
-      counter++;
-      winner();
-    } else {
-      e.target.innerHTML = O;
-      counter++;
-      winner();
+var Game = function () {
+  this.obj = {};
+  this.player = 'X';
+  this.counter = 0;
+};
+
+var game = new Game();
+
+function newGame () {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].innerHTML = '';
+  }
+  game = new Game();
+}
+
+
+function winner (player) {
+  winningCombos.forEach(function (el) {
+    if (game.obj[el[0]] === player && game.obj[el[1]] === player && game.obj[el[2]] === player) {
+      this.alert('Player ' + player + ' wins!')
+      newGame();
+    } else if (game.counter === 9) {
+      this.alert('It\'s a tie!');
+      newGame();
     }
-  } else {
-    alert('That spot is taken!');
-  }
+  })
 }
 
-function winner () {
-  if ((one.innerHTML === X && two.innerHTML === X && three.innerHTML === X) ||
-  (four.innerHTML === X && five.innerHTML === X && six.innerHTML === X) ||
-  (seven.innerHTML === X && eight.innerHTML === X && nine.innerHTML === X) ||
-  (one.innerHTML === X && four.innerHTML === X && seven.innerHTML === X) ||
-  (two.innerHTML === X && five.innerHTML === X && eight.innerHTML === X) ||
-  (three.innerHTML === X && six.innerHTML === X && nine.innerHTML === X) ||
-  (one.innerHTML === X && five.innerHTML === X && nine.innerHTML === X) ||
-  (three.innerHTML === X && five.innerHTML === X && seven.innerHTML === X)) {
-    alert ('Player 1 wins!');
-    window.location.reload();
-  }  else if
-    ((one.innerHTML === O && two.innerHTML === O && three.innerHTML === O) ||
-    (four.innerHTML === O && five.innerHTML === O && six.innerHTML === O) ||
-    (seven.innerHTML === O && eight.innerHTML === O && nine.innerHTML === O) ||
-    (one.innerHTML === O && four.innerHTML === O && seven.innerHTML === O) ||
-    (two.innerHTML === O && five.innerHTML === O && eight.innerHTML === O) ||
-    (three.innerHTML === O && six.innerHTML === O && nine.innerHTML === O) ||
-    (one.innerHTML === O && five.innerHTML === O && nine.innerHTML === O) ||
-    (three.innerHTML === O && five.innerHTML === O && seven.innerHTML === O)) {
-      alert ('Player 2 wins!');
-      window.location.reload();
-  } else if
-    (counter >= 9)  {
-    alert('It\'s a tie');
-    window.location.reload();
-  }
-}
+Game.prototype.move = function (e) {
+  var player = game.player;
 
-one.addEventListener('click', writeMove);
-two.addEventListener('click', writeMove);
-three.addEventListener('click', writeMove);
-four.addEventListener('click', writeMove);
-five.addEventListener('click', writeMove);
-six.addEventListener('click', writeMove);
-seven.addEventListener('click', writeMove);
-eight.addEventListener('click', writeMove);
-nine.addEventListener('click', writeMove);
+  if (e.target.dataset.id && e.target.innerHTML === '') {
+    game.counter++;
+    if (player === 'O') e.target.style.color = '#fb2a59';
+    if (player === 'X') e.target.style.color = '#005273';
+    game.obj[e.target.dataset.id] = player;
+    e.target.innerHTML = player;
+    winner(player);
+    game.player = player === 'O' ? 'X' : 'O'
+  }
+};
+
+board.addEventListener('click', game.move);
