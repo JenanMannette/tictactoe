@@ -4,6 +4,7 @@
   "description": "Implement a fully functioning tic-tac-toe board in JavaScript and CSS that can be playable by two people at the same computer. When a winning move is played, raise an alert that displays the winning player in the modal. After clicking OK, a new game should start. When a game move is made that casts the game to a draw, raise an alert that displays \"Draw\", and resets the game after clicking OK. You will use CSS and JavaScript to make this happen.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "nodemon --exec standard & nodemon --exec jasmine"
   },
   "repository": {
