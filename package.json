@@ -10,12 +10,6 @@
     "type": "git",
     "url": "https://github.com/JenanMannette/tictactoe.git"
   },
-  "standard": {
-    "ignore": [
-      "spec/**.js",
-      "node_modules/**"
-    ]
-  },
   "author": "",
   "license": "ISC",
   "bugs": {
